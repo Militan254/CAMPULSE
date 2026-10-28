@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f5f6fa;
+  color: #1f2937;
+}
+
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px 16px 80px;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  margin-right: 6px;
+}
+
+.tag.official { background: #bbf7d0; }
+.tag.leader { background: #bfdbfe; }
+.tag.unverified { background: #fde68a; }
+
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 10px 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.navbar a.active {
+  color: #2563eb;
+  font-weight: 600;
+}

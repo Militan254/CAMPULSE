@@ -137,7 +137,6 @@ export default function Rentals() {
               <a className="call-link" href={`tel:${listing.contact}`}>Call {listing.contact}</a>
             )}
             {listing.availability === 'available' && <button className="reserve-button" type="button">Reserve space</button>}
-            {listing.availability === 'available' && <button className="reserve-button" type="button">Reserve space</button>}
           </article>
         ))
       )}

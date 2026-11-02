@@ -88,11 +88,20 @@ export default function Home({ session }) {
     else await navigator.clipboard?.writeText(`${update.title}: ${update.body}`)
   }
 
-  useEffect(() => {
+    useEffect(() => {
     const term = searchTerm.trim()
     if (!term) return
-    supabase.from('profiles').select('id, display_name, username, avatar_url, created_at, verified').or(`display_name.ilike.%${term}%,username.ilike.%${term}%`).limit(8).then(({ data }) => setSearchResults(data ?? []))
-  }, [searchTerm])
+    // "verified" can only be read by signed-in users, so signed-out visitors don't ask for it
+    const columns = session
+      ? 'id, display_name, username, avatar_url, verified'
+      : 'id, display_name, username, avatar_url'
+    supabase
+      .from('profiles')
+      .select(columns)
+      .or(`display_name.ilike.%${term}%,username.ilike.%${term}%`)
+      .limit(8)
+      .then(({ data }) => setSearchResults(data ?? []))
+  }, [searchTerm, session])
 
   if (loading) return <div className="page">Loading...</div>
   if (error) {
